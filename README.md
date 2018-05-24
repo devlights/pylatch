@@ -79,11 +79,8 @@ True
 
 ## テスト
 
-現状、 doctest しか書いていません。そのうちユニットテスト追加します。
-
 ```sh
-$ python -m doctest pylatch/threadlatch.py -v
-$ python -m doctest pylatch/processlatch.py -v
+$ python -m unittest
 ```
 
 # 参考情報
