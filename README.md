@@ -12,34 +12,34 @@ Java や C# に存在する CountDownLatch を Python で簡易実装したも�
 利用するクラスは ```pylatch.threadlatch.CountDownLatch``` となります。
 
 ```python
-    >>> # ---------------------------------------------
-    >>> # スレッド処理で利用する場合
-    >>> # ---------------------------------------------
-    >>> import threading as th
-    >>> import pylatch.threadlatch as pl
+>>> # ---------------------------------------------
+>>> # スレッド処理で利用する場合
+>>> # ---------------------------------------------
+>>> import threading as th
+>>> import pylatch.threadlatch as pl
 
-    >>> latch = pl.CountDownLatch(2)
-    >>> th1 = th.Thread(target=lambda: latch.count_down())
-    >>> th2 = th.Thread(target=lambda: latch.count_down())
+>>> latch = pl.CountDownLatch(2)
+>>> th1 = th.Thread(target=lambda: latch.count_down())
+>>> th2 = th.Thread(target=lambda: latch.count_down())
 
-    >>> latch.count
-    2
-    >>> latch.await(timeout=1.0)
-    False
+>>> latch.count
+2
+>>> latch.await(timeout=1.0)
+False
 
-    >>> th1.start()
-    >>> th1.join()
-    >>> latch.count
-    1
-    >>> latch.await(timeout=1.0)
-    False
+>>> th1.start()
+>>> th1.join()
+>>> latch.count
+1
+>>> latch.await(timeout=1.0)
+False
 
-    >>> th2.start()
-    >>> th2.join()
-    >>> latch.count
-    0
-    >>> latch.await(timeout=1.0)
-    True
+>>> th2.start()
+>>> th2.join()
+>>> latch.count
+0
+>>> latch.await(timeout=1.0)
+True
 ```
 
 ## 使い方 (マルチプロセス用)
@@ -47,34 +47,34 @@ Java や C# に存在する CountDownLatch を Python で簡易実装したも�
 利用するクラスは ```pylatch.processlatch.CountDownLatch``` となります。
 
 ```python
-    >>> # ---------------------------------------------
-    >>> # マルチプロセス処理で利用する場合
-    >>> # ---------------------------------------------
-    >>> import multiprocessing as mp
-    >>> import pylatch.processlatch as pl
+>>> # ---------------------------------------------
+>>> # マルチプロセス処理で利用する場合
+>>> # ---------------------------------------------
+>>> import multiprocessing as mp
+>>> import pylatch.processlatch as pl
 
-    >>> latch = pl.CountDownLatch(2)
-    >>> proc1 = mp.Process(target=pl.__for_doctest, args=(latch,))
-    >>> proc2 = mp.Process(target=pl.__for_doctest, args=(latch,))
+>>> latch = pl.CountDownLatch(2)
+>>> proc1 = mp.Process(target=pl.__for_doctest, args=(latch,))
+>>> proc2 = mp.Process(target=pl.__for_doctest, args=(latch,))
 
-    >>> latch.count
-    2
-    >>> latch.await(timeout=1.0)
-    False
+>>> latch.count
+2
+>>> latch.await(timeout=1.0)
+False
 
-    >>> proc1.start()
-    >>> proc1.join()
-    >>> latch.count
-    1
-    >>> latch.await(timeout=1.0)
-    False
+>>> proc1.start()
+>>> proc1.join()
+>>> latch.count
+1
+>>> latch.await(timeout=1.0)
+False
 
-    >>> proc2.start()
-    >>> proc2.join()
-    >>> latch.count
-    0
-    >>> latch.await(timeout=1.0)
-    True
+>>> proc2.start()
+>>> proc2.join()
+>>> latch.count
+0
+>>> latch.await(timeout=1.0)
+True
 ```
 
 ## テスト
