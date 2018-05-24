@@ -68,7 +68,7 @@ class CountDownLatch:
         self.lock = mp.Condition()
 
     @property
-    def count(self):
+    def count(self) -> int:
         """
         現在のカウントを取得します。
 
