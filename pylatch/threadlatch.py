@@ -11,7 +11,7 @@ import typing as ty
 
 class CountDownLatch:
     """\
-    Java の CoundDownLatch 風なクラスです。
+    Java の CountDownLatch 風なクラスです。
     使い方は Java 版と同じで以下のメソッドを利用します。
 
     - count_down
@@ -52,7 +52,7 @@ class CountDownLatch:
     True
     """
 
-    def __init__(self, count: int = 1, condition: ty.Optional[th.Condition] = None):
+    def __init__(self, count: int = 1):
         """
         オブジェクトを初期化します。
 
@@ -61,7 +61,7 @@ class CountDownLatch:
         if count <= 0:
             raise ValueError(f'0 以下は指定できません。 [{count}]')
         self._count = count
-        self.lock = condition if condition else th.Condition()
+        self.lock = th.Condition()
 
     @property
     def count(self) -> int:

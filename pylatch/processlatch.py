@@ -15,7 +15,7 @@ def __for_doctest(l):
 
 class CountDownLatch:
     """\
-    Java の CoundDownLatch 風なクラスです。
+    Java の CountDownLatch 風なクラスです。
     使い方は Java 版と同じで以下のメソッドを利用します。
 
     - count_down
